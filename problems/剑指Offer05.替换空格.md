@@ -1,13 +1,13 @@
 <p align="center">
-<a href="https://programmercarl.com/other/kstar.html" target="_blank">
-  <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210924105952.png" width="1000"/>
+<a href="https://programmercarl.com/other/xunlianying.html" target="_blank">
+  <img src="../pics/训练营.png" width="1000"/>
 </a>
 <p align="center"><strong><a href="https://mp.weixin.qq.com/s/tqCxrMEU-ajQumL1i8im9A">参与本项目</a>，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们收益！</strong></p>
 
 
 # 题目：剑指Offer 05.替换空格
 
-[力扣题目链接](https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/)
+[力扣题目链接](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/)
 
 请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
 
@@ -156,20 +156,20 @@ char* replaceSpace(char* s){
 Java：
 ```Java
 //使用一个新的对象，复制 str，复制的过程对其判断，是空格则替换，否则直接复制，类似于数组复制
-public static String replaceSpace(StringBuffer str) {
-        if (str == null) {
+public static String replaceSpace(String s) {
+        if (s == null) {
             return null;
         }
-		//选用 StringBuilder 单线程使用，比较快，选不选都行
+        //选用 StringBuilder 单线程使用，比较快，选不选都行
         StringBuilder sb = new StringBuilder();
-		//使用 sb 逐个复制 str ，碰到空格则替换，否则直接复制
-        for (int i = 0; i < str.length(); i++) {
-		//str.charAt(i) 为 char 类型，为了比较需要将其转为和 " " 相同的字符串类型
-        //if (" ".equals(String.valueOf(str.charAt(i)))){
+        //使用 sb 逐个复制 s ，碰到空格则替换，否则直接复制
+        for (int i = 0; i < s.length(); i++) {
+            //s.charAt(i) 为 char 类型，为了比较需要将其转为和 " " 相同的字符串类型
+            //if (" ".equals(String.valueOf(s.charAt(i)))){}
             if (s.charAt(i) == ' ') {
                 sb.append("%20");
             } else {
-                sb.append(str.charAt(i));
+                sb.append(s.charAt(i));
             }
         }
         return sb.toString();
@@ -413,9 +413,132 @@ func replaceSpace(_ s: String) -> String {
 }
 ```
 
+Scala:
+
+方式一: 双指针
+```scala
+object Solution {
+  def replaceSpace(s: String): String = {
+    var count = 0
+    s.foreach(c => if (c == ' ') count += 1) // 统计空格的数量
+    val sOldSize = s.length // 旧数组字符串长度
+    val sNewSize = s.length + count * 2 // 新数组字符串长度
+    val res = new Array[Char](sNewSize) // 新数组
+    var index = sNewSize - 1 // 新数组索引
+    // 逆序遍历
+    for (i <- (0 until sOldSize).reverse) {
+      if (s(i) == ' ') {
+        res(index) = '0'
+        index -= 1
+        res(index) = '2'
+        index -= 1
+        res(index) = '%'
+      } else {
+        res(index) = s(i)
+      }
+      index -= 1
+    }
+    res.mkString
+  }
+}
+```
+方式二: 使用一个集合，遇到空格就添加%20
+```scala
+object Solution {
+  import scala.collection.mutable.ListBuffer
+  def replaceSpace(s: String): String = {
+    val res: ListBuffer[Char] = ListBuffer[Char]()
+    for (i <- s.indices) {
+      if (s(i) == ' ') {
+        res += '%'
+        res += '2'
+        res += '0'
+      }else{
+        res += s(i)
+      }
+    }
+    res.mkString
+  }
+}
+```
+方式三: 使用map
+```scala
+object Solution {
+  def replaceSpace(s: String): String = {
+    s.map(c => if(c == ' ') "%20" else c).mkString
+  }
+  }
+```
 
 
+PHP：
+```php
+function replaceSpace($s){
+    $sLen = strlen($s);
+    $moreLen = $this->spaceLen($s) * 2;
+
+    $head = $sLen - 1;
+    $tail = $sLen + $moreLen - 1;
+
+    $s = $s . str_repeat(' ', $moreLen);
+    while ($head != $tail) {
+        if ($s[$head] == ' ') {
+            $s[$tail--] = '0';
+            $s[$tail--] = '2';
+            $s[$tail] = '%';
+        } else {
+            $s[$tail] = $s[$head];
+        }
+        $head--;
+        $tail--;
+    }
+    return $s;
+}
+// 统计空格个数
+function spaceLen($s){
+    $count = 0;
+    for ($i = 0; $i < strlen($s); $i++) {
+        if ($s[$i] == ' ') {
+            $count++;
+        }
+    }
+    return $count;
+}
+```
+
+Rust
+
+```Rust
+impl Solution {
+    pub fn replace_space(s: String) -> String {
+        let mut len: usize = s.len();
+        let mut s = s.chars().collect::<Vec<char>>();
+        let mut count = 0;
+        for i in &s {
+            if i.is_ascii_whitespace() {
+                count += 1;
+            }
+        }
+        let mut new_len = len + count * 2;
+        s.resize(new_len, ' ');
+        while len < new_len {
+            len -= 1;
+            new_len -= 1;
+            if s[len].is_ascii_whitespace() {
+                s[new_len] = '0';
+                s[new_len - 1] = '2';
+                s[new_len - 2] = '%';
+                new_len -= 2;
+            }
+            else { s[new_len] = s[len] }
+        }
+        s.iter().collect::<String>()
+    }
+}
+```
 
 
------------------------
-<div align="center"><img src=https://code-thinking.cdn.bcebos.com/pics/01二维码一.jpg width=500> </img></div>
+<p align="center">
+<a href="https://programmercarl.com/other/kstar.html" target="_blank">
+  <img src="../pics/网站星球宣传海报.jpg" width="1000"/>
+</a>

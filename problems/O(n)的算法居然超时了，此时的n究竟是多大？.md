@@ -1,6 +1,6 @@
 <p align="center">
-<a href="https://programmercarl.com/other/kstar.html" target="_blank">
-  <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210924105952.png" width="1000"/>
+<a href="https://programmercarl.com/other/xunlianying.html" target="_blank">
+  <img src="../pics/训练营.png" width="1000"/>
 </a>
 <p align="center"><strong><a href="https://mp.weixin.qq.com/s/tqCxrMEU-ajQumL1i8im9A">参与本项目</a>，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们收益！</strong></p>
 # 程序提交之后为什么会超时？O(n)的算法会超时，n究竟是多大？
@@ -148,7 +148,7 @@ O(nlogn)的算法，1s内大概计算机可以运行 2 * (10^7)次计算，符�
 
 ![程序超时1](https://img-blog.csdnimg.cn/20201208231559175.png)
 
-至于$O(\log n)$和$O(n^3)$ 等等这些时间复杂度在1s内可以处理的多大的数据规模，大家可以自己写一写代码去测一下了。
+至于O(log n)和O(n^3) 等等这些时间复杂度在1s内可以处理的多大的数据规模，大家可以自己写一写代码去测一下了。
 
 # 完整测试代码
 
@@ -229,5 +229,7 @@ Go：
 
 
 
------------------------
-<div align="center"><img src=https://code-thinking.cdn.bcebos.com/pics/01二维码一.jpg width=500> </img></div>
+<p align="center">
+<a href="https://programmercarl.com/other/kstar.html" target="_blank">
+  <img src="../pics/网站星球宣传海报.jpg" width="1000"/>
+</a>

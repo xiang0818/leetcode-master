@@ -1,6 +1,6 @@
 <p align="center">
-<a href="https://programmercarl.com/other/kstar.html" target="_blank">
-  <img src="https://code-thinking-1253855093.file.myqcloud.com/pics/20210924105952.png" width="1000"/>
+<a href="https://programmercarl.com/other/xunlianying.html" target="_blank">
+  <img src="../pics/训练营.png" width="1000"/>
 </a>
 <p align="center"><strong><a href="https://mp.weixin.qq.com/s/tqCxrMEU-ajQumL1i8im9A">参与本项目</a>，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们收益！</strong></p>
 
@@ -9,7 +9,7 @@
 
 # 题目：剑指Offer58-II.左旋转字符串
 
-[力扣题目链接](https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
+[力扣题目链接](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
 
 字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"cdefgab"。
 
@@ -86,7 +86,7 @@ public:
 # 题外话
 
 一些同学热衷于使用substr，来做这道题。
-其实使用substr 和 反转 时间复杂度是一样的 ，都是$O(n)$，但是使用substr申请了额外空间，所以空间复杂度是$O(n)$，而反转方法的空间复杂度是$O(1)$。
+其实使用substr 和 反转 时间复杂度是一样的 ，都是O(n)，但是使用substr申请了额外空间，所以空间复杂度是O(n)，而反转方法的空间复杂度是O(1)。
 
 **如果想让这套题目有意义，就不要申请额外空间。**
 
@@ -113,6 +113,29 @@ class Solution {
             }
         }
 }
+```
+
+```java
+//解法二：空间复杂度：O(1)。用原始数组来进行反转操作
+//思路为：先整个字符串反转，再反转前面的，最后反转后面 n 个
+class Solution {
+    public String reverseLeftWords(String s, int n) {
+        char[] chars = s.toCharArray();
+        reverse(chars, 0, chars.length - 1);
+        reverse(chars, 0, chars.length - 1 - n);
+        reverse(chars, chars.length - n, chars.length - 1);
+        return new String(chars);
+    }
+
+    public void reverse(char[] chars, int left, int right) {
+        while (left < right) {
+            chars[left] ^= chars[right];
+            chars[right] ^= chars[left];
+            chars[left] ^= chars[right];
+            left++;
+            right--;
+        }
+    }
 ```
 
 python: 
@@ -263,6 +286,13 @@ function reverseLeftWords(s: string, n: number): string {
     return strArr.join('');
 };
 ```
+方法二:
+```typescript
+// 拼接两个字符串，截取符合要求的部分
+function reverseLeftWords(s: string, n: number): string {
+    return (s+s).slice(n,s.length+n);
+};
+```
 
 Swift:
 
@@ -291,9 +321,84 @@ func reverseString(_ s: inout [Character], startIndex: Int, endIndex: Int)  {
 ```
 
 
+### PHP
+
+```php
+function reverseLeftWords($s, $n) {
+    $this->reverse($s,0,$n-1); //反转区间为前n的子串
+    $this->reverse($s,$n,strlen($s)-1); //反转区间为n到末尾的子串
+    $this->reverse($s,0,strlen($s)-1); //反转整个字符串
+    return $s;
+}
+
+// 按指定进行翻转 【array、string都可】
+function reverse(&$s, $start, $end) {
+    for ($i = $start, $j = $end; $i < $j; $i++, $j--) {
+        $tmp = $s[$i];
+        $s[$i] = $s[$j];
+        $s[$j] = $tmp;
+    }
+}
+```
+
+
+Scala:
+
+```scala
+object Solution {
+  def reverseLeftWords(s: String, n: Int): String = {
+    var str = s.toCharArray // 转换为Array
+    // abcdefg => ba cdefg 
+    reverseString(str, 0, n - 1)
+    // ba cdefg => ba gfedc
+    reverseString(str, n, str.length - 1)
+    // ba gfedc => cdefgab
+    reverseString(str, 0, str.length - 1)
+    // 最终返回，return关键字可以省略
+    new String(str)
+  }
+  // 翻转字符串
+  def reverseString(s: Array[Char], start: Int, end: Int): Unit = {
+    var (left, right) = (start, end)
+    while (left < right) {
+      var tmp = s(left)
+      s(left) = s(right)
+      s(right) = tmp
+      left += 1
+      right -= 1
+    }
+  }
+}
+```
+
+Rust:
+
+```Rust
+impl Solution {
+    pub fn reverse(s: &mut Vec<char>, mut begin: usize, mut end: usize){
+        while begin < end {
+            let temp = s[begin];
+            s[begin] = s[end];
+            s[end] = temp;
+            begin += 1;
+            end -= 1;
+        }
+    }
+    pub fn reverse_left_words(s: String, n: i32) -> String {
+        let len = s.len();
+        let mut s = s.chars().collect::<Vec<char>>();
+        let n = n as usize;
+        Self::reverse(&mut s, 0, n - 1);
+        Self::reverse(&mut s, n, len - 1);
+        Self::reverse(&mut s, 0, len - 1);
+        s.iter().collect::<String>()
+    }
+}
+```
 
 
 
-
------------------------
-<div align="center"><img src=https://code-thinking.cdn.bcebos.com/pics/01二维码一.jpg width=500> </img></div>
+<p align="center">
+<a href="https://programmercarl.com/other/kstar.html" target="_blank">
+  <img src="../pics/网站星球宣传海报.jpg" width="1000"/>
+</a>
