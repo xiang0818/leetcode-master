@@ -1,12 +1,13 @@
 # 人生苦短，我用VIM！| 最强vim配置
 
 > Github地址：[https://github.com/youngyangyang04/PowerVim](https://github.com/youngyangyang04/PowerVim)
+> Gitee地址：[https://gitee.com/programmercarl/power-vim](https://gitee.com/programmercarl/power-vim)
 
 熟悉我的录友，应该都知道我是vim流，无论是写代码还是写文档（Markdown），都是vim，都没用IDE。
 
 但这里我并不是说IDE不好用，IDE在 代码跟踪，引用跳转等等其实是很给力的，效率比vim高。
 
-我用vim的话，如果需要跟踪代码的话，就用ctag去跳转，虽然很不智能（是基于规则匹配，不是语义匹配），但加上我自己的智能就也能用（这里真的要看对代码的把握程度了，哈哈哈）
+我用vim的话，如果需要跟踪代码的话，就用ctag去跳转，虽然很不智能（是基于规则匹配，不是语义匹配），但加上我自己的智能就也能用（这里真的要看对代码的把握程度了）
 
 所以连跟踪代码都不用IDE的话，其他方面那我就更用不上IDE了。
 
@@ -20,11 +21,11 @@
 
 使用VIM的话，本地，服务器，开发机，一刀流，无缝切换，爽不。
 
-IDE那么很吃内存，打开个IDE卡半天，用VIM就很轻便了，秒开有木有！
+IDE那么很吃内存，打开个IDE卡半天，用VIM就很轻便了，秒开！
 
 而且在我们日常开发中，工作年头多了，都会发现没有纯粹的C++，Java开发啥的，就是 C++也得写，Java也得写，有时候写Go起个http服务，写Python处理一下数据，写shell搞个自动部署，编译啥的。 **总是就是啥语言就得写，一些以项目需求为导向！**
 
-写语言还要切换不同的IDE，熟悉不同的操作姿势，想想是不是很麻烦。
+写语言还要切换不同的IDE，熟悉不同的操作规则，想想是不是很麻烦。
 
 听说好像现在有的IDE可以支持很多语言了，这个我还不太了解，但能确定的是，IDE支持的语言再多，也不会有vim多。
 
@@ -61,11 +62,11 @@ IDE那么很吃内存，打开个IDE卡半天，用VIM就很轻便了，秒开�
 
 来感受一下PowerVim的使用体验，看起来很酷吧！注意这些操作都不用鼠标的，一波键盘控制流！所以我平时写代码是不碰鼠标的！
 
-![](https://code-thinking.cdn.bcebos.com/gifs/vim_overview.gif)
+![](https://file1.kamacoder.com/i/algo/vim_overview.gif)
 
 ## 安装
 
-PowerVim的安防非常简单，我已经写好了安装脚本，只要执行以下就可以安装，而且不会影响你之前的vim配置，之前的配置都给做了备份，大家看一下脚本就知道备份在哪里了。
+PowerVim的安装非常简单，我已经写好了安装脚本，只要执行以下就可以安装，而且不会影响你之前的vim配置，之前的配置都给做了备份，大家看一下脚本就知道备份在哪里了。
 
 安装过程非常简单：
 ```bash
@@ -92,9 +93,11 @@ sh install.sh
 
 当然 还有很多，我还详细写了PowerVim的快捷键，使用方法，插件，配置，等等，都在Github主页的README上。当时我的Github上写的都是英文README，这次为了方便大家阅读，我又翻译成中文README。
 
-![](https://code-thinking-1253855093.file.myqcloud.com/pics/20211013102249.png)
+![](https://file1.kamacoder.com/i/algo/20211013102249.png)
 
 Github地址：[https://github.com/youngyangyang04/PowerVim](https://github.com/youngyangyang04/PowerVim)
 
-最后，因为这个vim配置因为我一直没有宣传，所以star数量很少，哈哈哈，录友们去给个star吧，真正的开发利器，值得顶起来！
+Gitee地址：[https://gitee.com/programmercarl/power-vim](https://gitee.com/programmercarl/power-vim)
+
+最后，因为这个vim配置因为我一直没有宣传，所以star数量很少，录友们去给个star吧，真正的开发利器，值得顶起来！
 
